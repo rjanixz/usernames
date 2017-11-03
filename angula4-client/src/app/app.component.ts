@@ -6,11 +6,9 @@ import { User } from './user';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ApiService]
+  providers: []
 })
 export class AppComponent {
-
-  newUser: User = new User();
 
   constructor(
     private apiService: ApiService
@@ -18,12 +16,11 @@ export class AppComponent {
 
   }
 
-  addUser() {
-    this.apiService.addUser(this.newUser);
-    this.newUser = new User();
+  onAddUser(user: User) {
+    this.apiService.addUser(user);
   }
 
-  removeUser(user) {
+  onRemoveUser(user) {
     this.apiService.deleteUserById(user.id);
   }
 

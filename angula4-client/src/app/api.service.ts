@@ -20,13 +20,10 @@ export class ApiService {
     return this;
   }
   
-  deleteUserById(id: number, values: Object = {}): User {
-    let user =  this.getUserById(id);
-    if(!user) {
-      return null;
-    }
-    Object.assign(user, values);
-    return user;
+  deleteUserById(id: number): ApiService {
+    this.users = this.users
+      .filter(user => user.id !== id)
+    return this;
   }
 
   getAllUsers(): User[] {
