@@ -40,6 +40,14 @@ public class User {
         return id;
     }
 
+    public void setUsername() {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     public String toString() {
         return String.format("user: { id:%d, username:'%s' }", id, username);
