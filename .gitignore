@@ -2,7 +2,4 @@
 spring/.idea/*
 spring/usernames.iml
 .settings/*
-target/*
-
-
-to_remove/*
+spring/target/*

@@ -1,0 +1,19 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>Users</h1>
+    <input class="new-user" placeholder="New username" autofocus="" [(ngModel)]="newUser.username" (keyup.enter)="addUser()">
+  </header>
+  <section class="main" *ngIf="users.length > 0">
+    <ul class="todo-list">
+      <li *ngFor="let user of users">
+        <div class="view">
+          <label>{{user.username}}</label>
+          <button class="destroy" (click)="removeUser(user)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="users.length > 0">
+    <span class="todo-count"><strong>{{users.length}}</strong> {{users.length == 1 ? 'item' : 'items'}} left</span>
+  </footer>
+</section>
