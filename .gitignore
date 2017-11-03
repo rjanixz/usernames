@@ -1,4 +1,5 @@
 .project
 .idea/*
-.usernames.iml
+usernames.iml
 .settings/*
+target/*
