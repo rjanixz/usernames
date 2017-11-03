@@ -1,6 +1,8 @@
 package com.intertec;
 
+import com.intertec.domain.RestrictedWord;
 import com.intertec.domain.User;
+import com.intertec.repository.RestrictedWordRepository;
 import com.intertec.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +22,16 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx, UserRepository userRepository) {
+    public CommandLineRunner commandLineRunner(ApplicationContext ctx, UserRepository userRepository,
+                                               RestrictedWordRepository restrictedWordRepository) {
         return args -> {
             LOGGER.info("Starting Spring boot");
 
             // testing repository
             userRepository.save(new User("rjanixz"));
             userRepository.save(new User("rasian"));
+
+            restrictedWordRepository.save(new RestrictedWord("test"));
 
             // fetch all users
             LOGGER.info("findAll found with findAll():");
