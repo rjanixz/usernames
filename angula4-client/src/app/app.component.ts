@@ -1,30 +1,51 @@
-import { Component } from '@angular/core';
-import { ApiService } from './api.service';
+import { Component, OnInit } from '@angular/core';
+import { UserDataService } from './user-data.service';
 import { User } from './user';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: []
+  providers: [UserDataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  users: User[] = [];
 
   constructor(
-    private apiService: ApiService
+    private userDataService: UserDataService
   ) {
 
   }
 
-  onAddUser(user: User) {
-    this.apiService.addUser(user);
+  public ngOnInit() {
+    this.userDataService
+      .getAllUsers()
+      .subscribe(
+        (users) => {
+          this.users = users;
+        }
+      );
+  }
+
+  onAddUser(user) {
+    this.userDataService
+      .addUser(user)
+      .subscribe(
+        (newUser) => {
+          this.users = this.users.concat(newUser)
+        }
+      );
   }
 
   onRemoveUser(user) {
-    this.apiService.deleteUserById(user.id);
+    this.userDataService
+      .deleteUserById(user.id)
+      .subscribe(
+        (_) => {
+          this.users = this.users.filter((u) => u.id !== user.id);
+        }
+      );
   }
 
-  get users() {
-    return this.apiService.getAllUsers();
-  }
 }
