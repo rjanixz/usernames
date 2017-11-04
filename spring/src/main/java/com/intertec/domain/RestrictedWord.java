@@ -21,7 +21,6 @@ public class RestrictedWord {
         this.word = word;
     }
 
-
     public Long getId() {
         return id;
     }

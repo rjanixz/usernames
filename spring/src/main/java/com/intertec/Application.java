@@ -27,19 +27,18 @@ public class Application {
         return args -> {
             LOGGER.info("Starting Spring boot");
 
-            // testing repository
+            // initial usernames
             userRepository.save(new User("rjanixz"));
             userRepository.save(new User("rasian"));
 
-            restrictedWordRepository.save(new RestrictedWord("test"));
+            // initial restricted words
+            restrictedWordRepository.save(new RestrictedWord("cannabis"));
+            restrictedWordRepository.save(new RestrictedWord("abuse"));
+            restrictedWordRepository.save(new RestrictedWord("crack"));
+            restrictedWordRepository.save(new RestrictedWord("damn"));
+            restrictedWordRepository.save(new RestrictedWord("drunk"));
+            restrictedWordRepository.save(new RestrictedWord("grass"));
 
-            // fetch all users
-            LOGGER.info("findAll found with findAll():");
-            LOGGER.info("-------------------------------");
-            for (User user : userRepository.findAll()) {
-                LOGGER.info(user.toString());
-            }
-            LOGGER.info("");
         };
     }
 }

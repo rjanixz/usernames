@@ -45,11 +45,15 @@ public class UserResource {
         Result<Boolean, List<String>> result = userService.checkUsername(user.getUsername());
 
         if(result.isSuccess()) {
+
             User newUser = userRepository.save(user);
+            LOGGER.info("User saved successfully");
 
             return ResponseEntity.created(new URI("/api/users/" + newUser.getId()))
                     .header("Success").body(newUser);
         } else {
+
+            LOGGER.info("Username is not valid.");
             return ResponseEntity.ok().header("Already taken").body(result.toJson());
         }
 
