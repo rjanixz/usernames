@@ -1,0 +1,9 @@
+<section class="main" *ngIf="words.length > 0">
+  <ul class="todo-list">
+      <li *ngFor="let word of words">
+        <app-restricted-word-list-item
+          [word]="word"
+          (remove)="onRemoveWord($event)"></app-restricted-word-list-item>
+      </li>
+  </ul>
+</section>

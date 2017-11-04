@@ -1,9 +1,9 @@
 <section class="main" *ngIf="users.length > 0">
-    <ul class="todo-list">
-        <li *ngFor="let user of users">
-          <app-user-list-item
-            [user]="user"
-            (remove)="onRemoveUser($event)"></app-user-list-item>
-        </li>
-    </ul>
-  </section>
+  <ul class="todo-list">
+      <li *ngFor="let user of users">
+        <app-user-list-item
+          [user]="user"
+          (remove)="onRemoveUser($event)"></app-user-list-item>
+      </li>
+  </ul>
+</section>

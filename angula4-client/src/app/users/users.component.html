@@ -1,0 +1,12 @@
+<section class="todoapp">
+    
+  <!-- User List Header -->
+  <app-user-list-header (add)="onAddUser($event)"></app-user-list-header>  
+
+  <!-- User List -->
+  <app-user-list [users]="users" (remove)="onRemoveUser($event)"></app-user-list>
+
+  <!-- User List Footer -->
+  <app-user-list-footer [users]="users"></app-user-list-footer>
+
+</section>

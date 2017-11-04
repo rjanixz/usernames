@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Http, Response } from '@angular/http';
-import { User } from './user'
+import { User } from './user';
+import { RestrictedWord } from './restricted-word';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -51,6 +52,45 @@ export class ApiService {
   public deleteUserById(userId: number): Observable<User> {
     return this.http
       .delete(API_URL + '/users/' + userId)
+      .map(response => null)
+      .catch(this.handleError);
+  }
+
+  // API: GET /api/restricted-words
+  public getAllWords(): Observable<RestrictedWord[]> {
+    return this.http
+      .get(API_URL + '/restricted-words')
+      .map(response => {
+        const words = response.json();
+        return words.map((word) => new RestrictedWord(word));
+      })
+      .catch(this.handleError)
+  }
+
+  // API: POST /api/restricted-words
+  public createWord(word: RestrictedWord): Observable<RestrictedWord> {
+    return this.http
+      .post(API_URL + '/restricted-words', word)
+      .map(response => {
+        return new RestrictedWord(response.json())
+      })
+      .catch(this.handleError);
+  }
+
+  // API: GET /api/restricted-words/:id
+  public getWordById(wordId: number): Observable<RestrictedWord> {
+    return this.http
+      .get(API_URL + '/restricted-words/' + wordId)
+      .map(response => {
+        return new RestrictedWord(response.json());
+      })
+      .catch(this.handleError);
+  }
+
+  // API: DELETE /api/restricted-words/:id
+  public deleteWordById(wordId: number): Observable<RestrictedWord> {
+    return this.http
+      .delete(API_URL + '/restricted-words/' + wordId)
       .map(response => null)
       .catch(this.handleError);
   }

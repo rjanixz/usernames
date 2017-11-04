@@ -1,0 +1,12 @@
+<section class="todoapp">
+    
+  <!-- Restricted Words List Header -->
+  <app-restricted-word-list-header (add)="onAddWord($event)"></app-restricted-word-list-header>  
+
+  <!-- Restricted Words List -->
+  <app-restricted-word-list [words]="words" (remove)="onRemoveWord($event)"></app-restricted-word-list>
+
+  <!-- Restricted Words List Footer -->
+  <app-restricted-word-list-footer [words]="words"></app-restricted-word-list-footer>
+
+</section>

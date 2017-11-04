@@ -1,51 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { UserDataService } from './user-data.service';
-import { User } from './user';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [UserDataService]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-
-  users: User[] = [];
-
-  constructor(
-    private userDataService: UserDataService
-  ) {
+export class AppComponent {
+  
+  constructor() {
 
   }
-
-  public ngOnInit() {
-    this.userDataService
-      .getAllUsers()
-      .subscribe(
-        (users) => {
-          this.users = users;
-        }
-      );
-  }
-
-  onAddUser(user) {
-    this.userDataService
-      .addUser(user)
-      .subscribe(
-        (newUser) => {
-          this.users = this.users.concat(newUser)
-        }
-      );
-  }
-
-  onRemoveUser(user) {
-    this.userDataService
-      .deleteUserById(user.id)
-      .subscribe(
-        (_) => {
-          this.users = this.users.filter((u) => u.id !== user.id);
-        }
-      );
-  }
-
 }
