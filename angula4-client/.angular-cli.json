@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "assets/css/usermvc-common.css",
+        "assets/css/usermvc-app.css",
         "styles.css"
       ],
       "scripts": [],
