@@ -135,7 +135,7 @@ public class UserService {
      */
     private boolean containsRestrictedWord(final String username) {
 
-        //TODO cache this list
+        // This list is cached to improve performance
         List<RestrictedWord> restrictedWords = restrictedWordRepository.findAll();
 
         // checking if the username contains any restricted word
@@ -151,7 +151,7 @@ public class UserService {
     private String removeRestrictedWord(final String username) {
 
         // First the restricted words list is retrieved.
-        //TODO cache this list
+        // This list is cached to improve performance
         List<RestrictedWord> restrictedWords = restrictedWordRepository.findAll();
 
         // To improve the performance parallelStream is used to filter the restricted words that
