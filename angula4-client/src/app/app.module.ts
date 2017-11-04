@@ -19,6 +19,7 @@ import { RestrictedWordListFooterComponent } from './restricted-word-list-footer
 import { RestrictedWordListHeaderComponent } from './restricted-word-list-header/restricted-word-list-header.component';
 import { RestrictedWordListItemComponent } from './restricted-word-list-item/restricted-word-list-item.component';
 import { RestrictedWordsComponent } from './restricted-words/restricted-words.component';
+import { SuggestionListComponent } from './suggestion-list/suggestion-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RestrictedWordsComponent } from './restricted-words/restricted-words.co
     RestrictedWordListItemComponent,
     RestrictedWordListHeaderComponent,
     RestrictedWordListFooterComponent,
-    RestrictedWordsComponent
+    RestrictedWordsComponent,
+    SuggestionListComponent
   ],
   imports: [
     AppRoutingModule,

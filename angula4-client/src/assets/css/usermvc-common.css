@@ -144,3 +144,16 @@ hr {
 	float: right;
 	color: rgba(241, 68, 68, 0.568);
 }
+
+.navigation-link {
+	float: right;
+	z-index: 10px;
+}
+
+.suggestion-msg {
+	margin-left: 55px;
+	margin-top: 10px;
+	font-size: 14px;
+	font-style: italic;
+    color: cadetblue;
+}

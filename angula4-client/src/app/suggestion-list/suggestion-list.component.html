@@ -1,0 +1,10 @@
+<section class="main" *ngIf="suggestions.length > 0">
+  <div class="suggestion-msg">Username already taken, check the following suggestions:</div>
+  <ul class="todo-list">
+      <li *ngFor="let suggestion of suggestions">
+        <div class="view">
+          <label>{{suggestion}}</label>
+        </div>
+      </li>
+  </ul>
+</section>

@@ -3,6 +3,7 @@ import { environment } from '../environments/environment';
 import { Http, Response } from '@angular/http';
 import { User } from './user';
 import { RestrictedWord } from './restricted-word';
+import { Result } from './result';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -29,11 +30,26 @@ export class ApiService {
   }
 
   // API: POST /api/users
-  public createUser(user: User): Observable<User> {
+  public createUser(user: User): Observable<Result> {
     return this.http
       .post(API_URL + '/users', user)
       .map(response => {
-        return new User(response.json())
+
+        const jsonResponse = response.json();
+        const suggestions = jsonResponse['suggestions'];
+
+        if(suggestions) {
+          const result = new Result();
+          result.success = false;
+          result.suggestions = suggestions;
+          return result;
+        } else {
+          const result = new Result();
+          result.success = true;
+          result.user = new User(response.json());
+          result.suggestions = [];
+          return result;
+        }
       })
       .catch(this.handleError);
   }

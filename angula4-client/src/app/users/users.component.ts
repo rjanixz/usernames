@@ -11,6 +11,7 @@ import { User } from '../user';
 export class UsersComponent implements OnInit {
 
   users: User[] = [];
+  suggestions: string[] = [];
 
   constructor(
     private userDataService: UserDataService
@@ -31,7 +32,14 @@ export class UsersComponent implements OnInit {
       .addUser(user)
       .subscribe(
         (newUser) => {
-          this.users = this.users.concat(newUser)
+
+          if(newUser.success) {
+            this.users = this.users.concat(newUser.user)
+            this.suggestions = [];
+          } else {
+            this.suggestions = newUser.suggestions;
+          }
+          
         }
       );
   }

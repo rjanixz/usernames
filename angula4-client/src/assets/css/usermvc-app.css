@@ -74,7 +74,7 @@ body {
 	font-size: 100px;
 	font-weight: 100;
 	text-align: center;
-	color: rgba(32, 17, 126, 0.15);
+	color: rgba(34, 174, 177, 0.15);
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
@@ -109,7 +109,7 @@ body {
 .main {
 	position: relative;
 	z-index: 2;
-	border-top: 1px solid #e6e6e6;
+	border-top: 1px solid cadetblue;
 }
 
 label[for='toggle-all'] {

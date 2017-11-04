@@ -2,6 +2,8 @@ package com.intertec.web.rest;
 
 import com.intertec.domain.User;
 import com.intertec.repository.UserRepository;
+import com.intertec.service.Result;
+import com.intertec.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,11 @@ public class UserResource {
     private Logger LOGGER = LoggerFactory.getLogger(UserResource.class);
 
     private UserRepository userRepository;
+    private UserService userService;
 
-    public UserResource(UserRepository userRepository) {
+    public UserResource(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/users")
@@ -31,16 +35,24 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody User user) throws URISyntaxException {
         LOGGER.info("REST request to save user : {} ", user);
         if(user.getId() != null) {
             return ResponseEntity.badRequest().header("Error", "Users cannot have duplicate ids").body(null);
         }
 
-        User result = userRepository.save(user);
+        // validating username
+        Result<Boolean, List<String>> result = userService.checkUsername(user.getUsername());
 
-        return ResponseEntity.created(new URI("/api/users/" + result.getId()))
-                .header("Success").body(result);
+        if(result.isSuccess()) {
+            User newUser = userRepository.save(user);
+
+            return ResponseEntity.created(new URI("/api/users/" + newUser.getId()))
+                    .header("Success").body(newUser);
+        } else {
+            return ResponseEntity.ok().header("Already taken").body(result.toJson());
+        }
+
     }
 
     @DeleteMapping("/users/{id}")

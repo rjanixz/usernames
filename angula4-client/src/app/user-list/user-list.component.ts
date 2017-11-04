@@ -11,6 +11,9 @@ export class UserListComponent {
   @Input()
   users: User[];
 
+  @Input()
+  suggestions: string[];
+
   @Output()
   remove: EventEmitter<User> = new EventEmitter();
 
