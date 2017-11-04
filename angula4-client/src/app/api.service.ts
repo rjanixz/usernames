@@ -27,6 +27,7 @@ export class ApiService {
       .catch(this.handleError)
   }
 
+  // API: POST /api/users
   public createUser(user: User): Observable<User> {
     return this.http
       .post(API_URL + '/users', user)
@@ -36,6 +37,7 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  // API: GET /api/users/:id
   public getUserById(userId: number): Observable<User> {
     return this.http
       .get(API_URL + '/users/' + userId)
@@ -45,6 +47,7 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  // API: DELETE /api/users/:id
   public deleteUserById(userId: number): Observable<User> {
     return this.http
       .delete(API_URL + '/users/' + userId)
