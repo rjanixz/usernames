@@ -2,7 +2,8 @@ package com.intertec.repository;
 
 
 import com.intertec.domain.User;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUsername(String username);
 
     // Overriding this to allow cache
-    @Cacheable("users")
+    @CachePut(value="users")
     List<User> findAll();
 }

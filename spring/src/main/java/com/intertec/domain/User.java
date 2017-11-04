@@ -1,12 +1,14 @@
 package com.intertec.domain;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 /**
  * This class represents the Users entity. Only have one field: 'username'.
  *
- * */
+ */
 @Entity
 @Table(name = "int_users")
 public class User {

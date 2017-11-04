@@ -5,15 +5,15 @@ This app is developed using Spring Boot and Angular4 for BE and FE
 
 Prerequisites
 
- - [Angulr CLI](https://www.npmjs.com/package/@angular/cli/tutorial) 
+ - [Angulr CLI](https://www.npmjs.com/package/@angular/cli/tutorial) (require Node 6.9.0 or higher, together with NPM 3 or higher)
  - Maven 3.x
  - Java 1.8
 
 How to run it
 
- - Checkout the repo https://github.com/rjanixz/usernames
+ - Checkout the repo https://github.com/rjanixz/usernames.git
  - To Run the BE App go to *usernames/spring* directory
- - execute `mvn package && java -jar target/usernames-0.0.1-SNAPSHOT.jar`
+ - execute `mvn package` and then `java -jar target/usernames-0.0.1-SNAPSHOT.jar`
 	 - http://localhost:8080/api/users and http://localhost:8080/api/restricted-words should be availabe
  - To Run the FE App go to *usernames/angula4-client* directory
  - execute `npm install` and then `ng serve`
