@@ -157,3 +157,8 @@ hr {
 	font-style: italic;
     color: cadetblue;
 }
+
+.restricted-title {
+	top: -115px!important;
+	font-size: 70px!important;
+}

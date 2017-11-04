@@ -15,6 +15,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/**
+ * This class provides the needed rest endpoints to the FE app to maintain
+ * the Users in database
+ */
 @RestController
 @RequestMapping("/api")
 public class UserResource {

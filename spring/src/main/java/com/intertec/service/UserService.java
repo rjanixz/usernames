@@ -94,7 +94,7 @@ public class UserService {
 
         boolean isInvalid = containsRestrictedWord(username);
         if(isInvalid){
-            // In this point, firs we need to remove the restricted word
+            // In this point, first we need to remove the restricted words
             LOGGER.info("Username is invalid: {}", username);
             newUsername = removeRestrictedWord(username);
             LOGGER.info("Username fixed to: {}", newUsername);
@@ -106,6 +106,8 @@ public class UserService {
         int attempt = 0;
         int suggestionsPending = NUM_OF_SUGGESTIONS;
 
+        // Iterating until it reaches the Maximum number of attempts
+        // or It has reached the Maximum number of suggestions
         while(attempt < MAXIMUM_NUMBER_OF_ATTEMPTS &&
                 suggestionsPending > 0) {
 
@@ -154,8 +156,8 @@ public class UserService {
         // This list is cached to improve performance
         List<RestrictedWord> restrictedWords = restrictedWordRepository.findAll();
 
-        // To improve the performance parallelStream is used to filter the restricted words that
-        // the username may contain.
+        // Parallel stream cannot be used here since It need to remove one restricted word at time
+        // to get one single result
         // Then each restricted word is removed from the username
         return restrictedWords.stream()
                 .filter(rw -> StringUtils.contains(username, rw.getWord()))
