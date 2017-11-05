@@ -6,7 +6,7 @@ import { RestrictedWordsComponent } from './restricted-words/restricted-words.co
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'restricted-words',
+    redirectTo: 'users',
     pathMatch: 'full'
   },
   {

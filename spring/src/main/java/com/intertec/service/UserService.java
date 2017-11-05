@@ -51,7 +51,7 @@ public class UserService {
             }
 
             @Override
-            public List<String> results() {
+            public List<String> suggestions() {
 
                 List<String> suggestions = new ArrayList<>();
 
@@ -74,7 +74,7 @@ public class UserService {
              */
             public String toJson() {
                 // added quotes to the string
-                List<String> quotedList = results().stream().map(r -> "\"" + r + "\"").collect(Collectors.toList());
+                List<String> quotedList = suggestions().stream().map(r -> "\"" + r + "\"").collect(Collectors.toList());
 
                 // simulating a json format
                 return String.format("{\"success\":%s, \"suggestions\":[%s]}",

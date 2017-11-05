@@ -4,7 +4,7 @@ public interface Result<T, V> {
 
     T isSuccess();
 
-    V results();
+    V suggestions();
 
     String toJson();
 }
